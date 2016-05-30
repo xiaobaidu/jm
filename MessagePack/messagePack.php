@@ -16,7 +16,7 @@
 $arr = array('name'=>"heyue",'sex'=>'男','company'=>'sina','age'=>30);
 echo "Json:".strlen(json_encode($arr))."\n";
 echo "Messagepack:".strlen(msgpack_pack($arr))."\n";
-$str = "何跃新浪";
+$str = "XXX";
 echo json_encode($str)."\n";
 echo 'json_str:'.strlen(json_encode($str))."\n";
 echo 'MessagePack_str:'.strlen(msgpack_pack($str))."\n";
@@ -25,7 +25,7 @@ echo json_encode($str)."\n";
 echo 'json_str:'.strlen(json_encode($str))."\n";
 echo 'MessagePack_str:'.strlen(msgpack_pack($str))."\n";
 
-/* Json:57
+Json:57
 
 Messagepack:38
 从这里可以看出MessagePack比json少了好多
@@ -43,8 +43,8 @@ MessagePack_str:13
 json_str:12
 
 MessagePack_str:11
-英文字符呢？这个仅仅是比json少了一个引号的大小。  */
-/* 我不能给大家算比例，因为这个得看MessagePack的压缩算法，MessagePack的核心压缩方式：
+英文字符呢？这个仅仅是比json少了一个引号的大小。 
+ 我不能给大家算比例，因为这个得看MessagePack的压缩算法，MessagePack的核心压缩方式：
 1.true、false 之类的：这些太简单了，直接给1个字节，（0xc2 表示true，0xc3表示false）
 2.不用表示长度的：就是数字之类的，他们天然是定长的，是用一个字节表示后面的内容是什么东东，比如用（0xcc 表示这后面，是个uint 8，用oxcd表示后面是个uint 16，用 0xca 表示后面的是个float 32).
 3.不定长的：比如字符串、数组，类型后面加 1~4个字节，用来存字符串的长度，如果是字符串长度是256以内的，只需要1个字节，MessagePack能存的最长的字符串，是(2^32 -1 ) 最长的4G的字符串大小。
@@ -72,6 +72,6 @@ PHP的MessagePack的扩展的安装
 这个MessagePack的PHP扩展，是传说中的鸟哥Laruence开发维护的，在鸟哥的Yar中，也使用了MessagePack 作为打包协议之一。
 从现状看来，MessagePack目前还很少有公司大规模使用？这是为什么呢？由于没有读过MessagePack的相关的源码，所以在这个范畴，鸟哥最有发言权…
 后来，redis 2.6支持了MessagePack…
-MessagePack 和 protocol buffer*/
+MessagePack 和 protocol buffer
 
 以上是摘抄的，感觉messagepack除了对开发人员的可读性上偏差点，其他方面还是比较或是非常不错的选择。当数据结构复杂了就更能显出messagePack的优势。
