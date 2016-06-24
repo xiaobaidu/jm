@@ -1,4 +1,5 @@
 <?php
+//定时抓取博客园文章内容，做本地数据库。 phpcms部分表没有处理。大部分处理，内容存储内容格式urlencode
 exit;
 header("Content-type: text/html; charset=utf-8"); 
 $connect = mysqli_connect("localhost","root","","phpcmsv9");//连接数据库
