@@ -1,5 +1,6 @@
 <?php
-//定时抓取博客园文章内容，做本地数据库。 phpcms部分表没有处理。大部分处理，内容存储内容格式urlencode
+//@author xiaobaidu
+//定时抓取博客园文章内容，做本地数据库。 phpcms部分表没有处理。大部分处理，内容存储内容格式urlencode，代码仅供参考，有遗漏或不足还请不吝指出，谢谢。
 exit;
 header("Content-type: text/html; charset=utf-8"); 
 $connect = mysqli_connect("localhost","root","","phpcmsv9");//连接数据库
@@ -40,7 +41,7 @@ foreach($myArray as $kk=>$vv){
 			'ParentCategoryId'=>2,
 		);
 		$catid = $vv;
-		$url = "http://www.cnblogs.com/mvc/AggSite/PostList.aspx";
+		$url = "http://www.cnblogs.com/mvc/AggSites/PostLists.aspx";//地址有做修改，使用前请修改
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_URL, $url);
 		curl_setopt($ch, CURLOPT_HEADER, 0);
