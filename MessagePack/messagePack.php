@@ -74,5 +74,4 @@ PHP的MessagePack的扩展的安装
 后来，redis 2.6支持了MessagePack…
 MessagePack 和 protocol buffer
 
-以上来自转载。
-感觉messagepack除了对开发人员的可读性上偏差点，其他方面还是比较或是非常不错的选择。当数据结构复杂了就更能显出messagePack的优势。
+感觉messagepack除了对开发人员的可读性上偏差点，其他方面还是比较或是非常不错的选择。当数据结构复杂了就更能显出messagePack的优势。(摘抄自网络)
