@@ -7,7 +7,7 @@
   	}
   //手机验证
   	function isMobile($mobile){
-  		//return (!empty($mobile) && (int)preg_match("/^1[3|4|5|7|8][0-9]{9}$/ ", $mobile) > 0) ? true : false;
+  		return (!empty($mobile) && (int)preg_match("/^1[3|4|5|7|8][0-9]{9}$/ ", $mobile) > 0) ? true : false;
   	}
   //昵称验证
   	function checkNickname($nickname){
