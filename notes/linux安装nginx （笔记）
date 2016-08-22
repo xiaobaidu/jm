@@ -1,10 +1,16 @@
-linux 安装nginx
+linux 安装nginx mysql php
 
-首先下载nginx的rpm库文件 rpm库文件下载地址  http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+首先下载nginx,mysql的rpm库文件 rpm库文件下载地址  
+nginx:
+http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+mysql:
+http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
 
 说来惭愧 本人安装的最简版的centos 所以各种命令不支持啊，最后是下载到本地后 安装rz命令（yum install lrzsz） 通过rz把rpm文件上传到菜单服务器。
 
-待rpm文件上传到服务器后，执行rpm文件 命令（rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm）
+待rpm文件上传到服务器后，执行rpm文件 命令（rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm或rpm mysql-community-release-el7-5.noarch.rpm）
 
 中间会有一些提示 例如 Is this ok [y/d/N]  直接输入‘y’继续就可以啦
 
@@ -15,3 +21,13 @@ linux 安装nginx
 最后可以把nginx服务打开啦（service nginx start）。
 
 这样请求服务器就可以看到（Welcome to nginx! If you see this page, the nginx web server is successfully installed and working. Further configuration is required......）
+
+
+
+安装mysql：
+安装完成之后，执行（service mysql start）启动mysql服务,之后修改数据库密码，
+use mysql 
+update user password = password("新的密码") where user='root';
+接下来可以查看数据库和表了
+show databases
+show tables
