@@ -1,0 +1,17 @@
+linux 安装nginx
+
+首先下载nginx的rpm库文件 rpm库文件下载地址  http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+说来惭愧 本人安装的最简版的centos 所以各种命令不支持啊，最后是下载到本地后 安装rz命令（yum install lrzsz） 通过rz把rpm文件上传到菜单服务器。
+
+待rpm文件上传到服务器后，执行rpm文件 命令（rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm）
+
+中间会有一些提示 例如 Is this ok [y/d/N]  直接输入‘y’继续就可以啦
+
+等待提示安装完毕之后，可以使用（nginx -V）查看一下nginx版本信息等。
+
+当然也可以使用（whereis nginx）看一下nginx的安装目录等信息。
+
+最后可以把nginx服务打开啦（service nginx start）。
+
+这样请求服务器就可以看到（Welcome to nginx! If you see this page, the nginx web server is successfully installed and working. Further configuration is required......）
