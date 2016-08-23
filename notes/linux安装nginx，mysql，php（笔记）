@@ -42,3 +42,8 @@ yum install php php-fpm
 make 编译php
 make install 安装php
 php -v 查看版本
+这是当service php status 发现php还是处于dead状态 文件找不到
+....还没完，继续
+发现/usr/local/lib下并没有php.ini文件 所以把安装目录下的php.ini-production复制到/usr/local/lib下（cp php.ini-production /usr/local/lib）
+我们知道nginx是不支持php的，跟apache还是不一样的，不一样在nginx除了安装了php还要安装php-fpm，php-fpm可以理解是一个解释器。
+
