@@ -1,0 +1,19 @@
+当把phpcms放入指定项目目录下等待安装，但是发现安装的第四步，文件权限设置文件的当前状态都是“不可写”，看到后自己很自觉的把文件权限改成了777 
+当然用的是递归修改的文件权限 （chmod 777 -R phpcms/）此处不建议全部改为777。
+一般情况下都会解决文件权限的问题，但是今天我这里出现了一个问题，就是没变化依旧是不可写。顿时蒙逼了，心想这也不需要重启服务啊。
+改完之后文件权限都显示-rwxrwxrwx. 但是依旧提示说没权限。
+唉，
+权限关乎安全，所以我就想到了linux的防火墙。
+百度了一下，setenforce是Linux的selinux防火墙配置命令 执行setenforce 0 表示关闭selinux防火墙。
+
+执行命令：getenforce
+Enforcing
+提示是强制模式
+所以接着执行
+setenforce 0
+执行命令：getenforce
+结果：Permissive
+这时候再看安装phpcms已经看到文件权限变可写
+
+注：SELinux 宽容模式(permissive) 强制模式(enforcing)；
+
