@@ -1,0 +1,49 @@
+linux 安装nginx mysql php
+
+
+首先下载nginx,mysql的rpm库文件 rpm库文件下载地址  
+nginx:
+http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+
+mysql:
+http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+
+说来惭愧 本人安装的最简版的centos 所以各种命令不支持啊，最后是下载到本地后 安装rz命令（yum install lrzsz） 通过rz把rpm文件上传到菜单服务器。
+
+待rpm文件上传到服务器后，执行rpm文件 命令（rpm -ivh nginx-release-centos-7-0.el7.ngx.noarch.rpm或rpm mysql-community-release-el7-5.noarch.rpm）
+
+中间会有一些提示 例如 Is this ok [y/d/N]  直接输入‘y’继续就可以啦
+
+等待提示安装完毕之后，可以使用（nginx -V）查看一下nginx版本信息等。
+
+当然也可以使用（whereis nginx）看一下nginx的安装目录等信息。
+
+最后可以把nginx服务打开啦（service nginx start）。
+
+这样请求服务器就可以看到（Welcome to nginx! If you see this page, the nginx web server is successfully installed and working. Further configuration is required......）
+
+
+
+安装mysql：
+安装完成之后，执行（service mysql start）启动mysql服务,之后修改数据库密码，
+use mysql 
+update user password = password("新的密码") where user='root';
+接下来可以查看数据库和表了
+show databases
+show tables
+
+
+安装php：
+一样下载了php5的压缩包（php-5.6.12.tar.gz）并上传（rz）,然后解压（tar zxvf php-5.6.12.tar.gz），解压完成之后
+yum install php php-fpm 
+./configure 操作
+本人操作提示：configure: error: no acceptable C compiler found in $PATH(这个是提示没有C语言编译器)，可以安装gcc （yum install gcc）
+然后 ./configure 配置php并检查
+make 编译php
+make install 安装php
+php -v 查看版本
+这是当service php status 发现php还是处于dead状态 文件找不到
+....还没完，继续
+发现/usr/local/lib下并没有php.ini文件 所以把安装目录下的php.ini-production复制到/usr/local/lib下（cp php.ini-production /usr/local/lib）
+我们知道nginx是不支持php的，跟apache还是不一样的，不一样在nginx除了安装了php还要安装php-fpm，php-fpm可以理解是一个解释器。
+
